@@ -53,6 +53,12 @@
 </head>
 <body>
   <h1>白洋舍 料金計算（テスト版）</h1>
+  <div class="form-group">
+    <label for="itemSearch">🔍 品名検索:</label>
+    <input id="itemSearch" list="itemSuggestions" placeholder="品名を入力して選択" />
+    <datalist id="itemSuggestions"></datalist>
+    <button id="addSearchBtn">検索から追加</button>
+  </div>
 
   <div class="form-group">
     <label for="itemSelect">品目:</label>
@@ -144,11 +150,16 @@
     const totalSpan = document.getElementById("total");
 
     items.forEach(item => {
-      const option = document.createElement("option");
-      option.value = item.name;
-      option.textContent = item.name;
-      itemSelect.appendChild(option);
+      const option1 = document.createElement("option");
+      option1.value = item.name;
+      option1.textContent = item.name;
+      itemSelect.appendChild(option1);
+
+      const option2 = document.createElement("option");
+      option2.value = item.name;
+      itemSuggestions.appendChild(option2);
     });
+
 
     document.getElementById("addBtn").addEventListener("click", () => {
       const name = itemSelect.value;
@@ -171,6 +182,33 @@
       tableBody.appendChild(row);
       updateTotal();
     });
+
+    document.getElementById("addSearchBtn").addEventListener("click", () => {
+  const name = document.getElementById("itemSearch").value;
+  const type = typeSelect.value;
+  const item = items.find(i => i.name === name);
+
+  if (!item) {
+    alert("該当する品目が見つかりません");
+    return;
+  }
+
+  const price = item[type];
+  if (price == null) {
+    alert("この種別では金額が未設定です。");
+    return;
+  }
+
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${name}</td>
+    <td>${type.replace("料金", "")}</td>
+    <td>${price}</td>
+    <td><button class="deleteBtn">削除</button></td>
+  `;
+  tableBody.appendChild(row);
+  updateTotal();
+});
 
     document.getElementById("resetBtn").addEventListener("click", () => {
       tableBody.innerHTML = "";
