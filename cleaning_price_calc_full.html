@@ -60,10 +60,6 @@
     <button id="addSearchBtn">検索から追加</button>
   </div>
 
-  <div class="form-group">
-    <label for="itemSelect">品目:</label>
-    <select id="itemSelect"></select>
-
     <label for="typeSelect">種別:</label>
     <select id="typeSelect">
       <option value="オリジナル料金">オリジナル</option>
@@ -72,7 +68,6 @@
       <option value="クリスタル料金">クリスタル</option>
     </select>
 
-    <button id="addBtn">追加</button>
     <button id="resetBtn">リセット</button>
   </div>
 
@@ -220,7 +215,6 @@
       { "name": "前ひだワイシャツ", "オリジナル料金": 1700, "ローヤル料金": null, "素材別料金": null, "クリスタル料金": null },
     ];
 
-    const itemSelect = document.getElementById("itemSelect");
     const typeSelect = document.getElementById("typeSelect");
     const tableBody = document.getElementById("tableBody");
     const totalSpan = document.getElementById("total");
@@ -234,29 +228,6 @@
       const option2 = document.createElement("option");
       option2.value = item.name;
       itemSuggestions.appendChild(option2);
-    });
-
-
-    document.getElementById("addBtn").addEventListener("click", () => {
-      const name = itemSelect.value;
-      const type = typeSelect.value;
-      const item = items.find(i => i.name === name);
-      const price = item[type];
-
-      if (price == null) {
-        alert("この種別では金額が未設定です。");
-        return;
-      }
-
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${name}</td>
-        <td>${type.replace("料金", "")}</td>
-        <td>${price}</td>
-        <td><button class="deleteBtn">削除</button></td>
-      `;
-      tableBody.appendChild(row);
-      updateTotal();
     });
 
     document.getElementById("addSearchBtn").addEventListener("click", () => {
