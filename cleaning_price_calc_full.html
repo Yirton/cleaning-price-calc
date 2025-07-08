@@ -220,14 +220,9 @@
     const totalSpan = document.getElementById("total");
 
     items.forEach(item => {
-      const option1 = document.createElement("option");
-      option1.value = item.name;
-      option1.textContent = item.name;
-      itemSelect.appendChild(option1);
-
-      const option2 = document.createElement("option");
-      option2.value = item.name;
-      itemSuggestions.appendChild(option2);
+      const option = document.createElement("option");
+      option.value = item.name;
+      itemSuggestions.appendChild(option);
     });
 
     document.getElementById("addSearchBtn").addEventListener("click", () => {
