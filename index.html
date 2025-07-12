@@ -70,6 +70,7 @@
   <input id="itemSearch" list="itemSuggestions" placeholder="品名を入力して選択" />
   <datalist id="itemSuggestions"></datalist>
 
+  <br />
   <label for="typeSelect">種別:</label>
   <select id="typeSelect">
     <option value="オリジナル料金">オリジナル</option>
@@ -81,12 +82,6 @@
   <button id="addSearchBtn">検索から追加</button>
 </div>
 
-<!-- ↓フォームグループとは分けてリセットを下に配置 -->
-<div style="margin: 10px 0;">
-  <button id="resetBtn">リセット</button>
-</div>
-
-
   <table>
     <thead>
       <tr><th>品目</th><th>種別</th><th>金額</th><th>操作</th></tr>
@@ -95,6 +90,10 @@
   </table>
 
   <p>合計金額(税抜): <span id="total">0</span> 円</p>
+
+  <div style="margin: 10px 0;">
+  <button id="resetBtn">リセット</button>
+</div>
 
 <div style="margin-top: 30px;">
   <h2>各種加工のご案内</h2>
