@@ -250,12 +250,7 @@
       { "name": "和服地コート", "オリジナル料金": null, "ローヤル料金": null, "素材別料金": 5200, "クリスタル料金": 5200 },
       { "name": "ワンピース", "オリジナル料金": 1800, "ローヤル料金": 3600, "素材別料金": 3600, "クリスタル料金": 3600 }
     ];
-    const searchAlias = {
- 
-};
-
-
-
+    
     const typeSelect = document.getElementById("typeSelect");
     const tableBody = document.getElementById("tableBody");
     const totalSpan = document.getElementById("total");
@@ -267,20 +262,11 @@
       itemSuggestions.appendChild(option);
     });
 
-    Object.keys(searchAlias).forEach(alias => {
-  const option = document.createElement("option");
-  option.value = alias;
-  itemSuggestions.appendChild(option);
-});
-
-    document.getElementById("addSearchBtn").addEventListener("click", () => {
-  let name = document.getElementById("itemSearch").value.trim();
-  if (searchAlias[name]) {
-    name = searchAlias[name];
-  }
-
+document.getElementById("addSearchBtn").addEventListener("click", () => {
+  const name = document.getElementById("itemSearch").value;
   const type = typeSelect.value;
   const item = items.find(i => i.name === name);
+
 
   if (!item) {
     alert("該当する品目が見つかりません");
