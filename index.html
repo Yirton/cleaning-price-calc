@@ -65,23 +65,27 @@
 </head>
 <body>
   <h1>白洋舍 料金シミュレータ</h1>
-  <div class="form-group">
-    <label for="itemSearch">🔍 品名検索:</label>
-    <input id="itemSearch" type="search" list="itemSuggestions" placeholder="品名を入力して選択" />
-    <datalist id="itemSuggestions"></datalist>
-    <button id="addSearchBtn">検索から追加</button>
-  </div>
+<div class="form-group">
+  <label for="itemSearch">🔍 品名検索:</label>
+  <input id="itemSearch" list="itemSuggestions" placeholder="品名を入力して選択" />
+  <datalist id="itemSuggestions"></datalist>
 
-    <label for="typeSelect">種別:</label>
-    <select id="typeSelect">
-      <option value="オリジナル料金">オリジナル</option>
-      <option value="ローヤル料金">ローヤル</option>
-      <option value="素材別料金">素材別</option>
-      <option value="クリスタル料金">クリスタル</option>
-      <option value="和洗料金">和洗</option>
-    </select>
+  <label for="typeSelect">種別:</label>
+  <select id="typeSelect">
+    <option value="オリジナル料金">オリジナル</option>
+    <option value="ローヤル料金">ローヤル</option>
+    <option value="素材別料金">素材別</option>
+    <option value="クリスタル料金">クリスタル</option>
+  </select>
 
-    <button id="resetBtn">リセット</button>
+  <button id="addSearchBtn">検索から追加</button>
+</div>
+
+<!-- ↓フォームグループとは分けてリセットを下に配置 -->
+<div style="margin: 10px 0;">
+  <button id="resetBtn">リセット</button>
+</div>
+
 
   <table>
     <thead>
